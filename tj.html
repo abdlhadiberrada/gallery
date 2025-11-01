@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Photo Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #image {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 3px solid #333;
+            background-color: #fff;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .preview {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border: 2px solid #666;
+            cursor: pointer;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .preview:hover {
+            transform: scale(1.05);
+            border-color: #007bff;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive Photo Gallery</h1>
+        
+        <div id="image">
+            Hover over an image below to display here.
+        </div>
+
+        <div class="gallery">
+            <img 
+                class="preview" 
+                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" 
+                alt="Beautiful mountain landscape with snow-capped peaks"
+                onmouseover="upDate(this)"
+                onmouseout="undo()"
+            >
+            
+            <img 
+                class="preview" 
+                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop" 
+                alt="Tropical beach with crystal clear water and palm trees"
+                onmouseover="upDate(this)"
+                onmouseout="undo()"
+            >
+            
+            <img 
+                class="preview" 
+                src="https://images.unsplash.com/photo-1511300636408-a63a89df3482?w=400&h=300&fit=crop" 
+                alt="Dense forest with tall trees and sunlight streaming through"
+                onmouseover="upDate(this)"
+                onmouseout="undo()"
+            >
+            
+            <img 
+                class="preview" 
+                src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=300&fit=crop" 
+                alt="Peaceful lake reflecting mountains at sunset"
+                onmouseover="upDate(this)"
+                onmouseout="undo()"
+            >
+            
+            <img 
+                class="preview" 
+                src="https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?w=400&h=300&fit=crop" 
+                alt="Starry night sky over desert landscape"
+                onmouseover="upDate(this)"
+                onmouseout="undo()"
+            >
+            
+            <img 
+                class="preview" 
+                src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=400&h=300&fit=crop" 
+                alt="Rolling hills with green grass and blue sky"
+                onmouseover="upDate(this)"
+                onmouseout="undo()"
+            >
+        </div>
+    </div>
+
+    <script>
+        
+        function upDate(previewPic) {
+            console.log("upDate function triggered");
+            console.log("Alt text:", previewPic.alt);
+            console.log("Source:", previewPic.src);
+            
+            const imageDiv = document.getElementById('image');
+            
+            imageDiv.innerHTML = previewPic.alt;
+            
+            imageDiv.style.backgroundImage = "url('" + previewPic.src + "')";
+        }
+
+        function undo() {
+            console.log("undo function triggered");
+            
+            const imageDiv = document.getElementById('image');
+            
+            imageDiv.style.backgroundImage = "url('')";
+            
+            imageDiv.innerHTML = "Hover over an image below to display here.";
+        }
+    </script>
+</body>
+</html>
